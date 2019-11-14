@@ -5,6 +5,18 @@ body {
     padding-bottom: 20px;
 }
 
+form{
+    display : none;
+}
+circle:hover{
+    stroke: gold;
+    stroke-dasharray: 10,10;
+}
+
+circle.selected{
+    stroke: green;
+
+}
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
 .body-content {

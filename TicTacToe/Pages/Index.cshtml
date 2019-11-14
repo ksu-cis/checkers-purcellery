@@ -4,4 +4,39 @@
     ViewData["Title"] = "Home page";
 }
 
-<h1>Hello World</h1>
+<h1>Checkers!</h1>
+
+<svg width="800" height="800">
+    @for(int y = 0; y < 8; y++)
+    {
+        @for(int x = 0; x < 8; x++)
+        {
+            <rect data-x="@x"
+                  data-y="@y"
+                  x="@(x*100)" y="@(y*100)"
+                  width="100"
+                  height="100"
+                  fill="@((x+y)%2==0?"red":"black")")/>
+
+            if(Model.Game.Board[x,y] != null)
+            {
+                <circle data-x="@x"
+                        data-y="@y"
+                        cx="@(x*100+50)"
+                        cy="@(y*100+50)"
+                        r="40"
+                        fill="@Model.Game.Board[x,y].Color"
+                        stroke="gray"/>
+            }
+        }
+    }
+</svg>
+
+<form>
+    <input type="text" id="cy" name="cx" />
+    <input type="text" id="cy" name="cy" />
+    <input type="text" id="sx" name="sx" />
+    <input type="text" id="sy" name="sy" />
+    <textarea name="state" value="Model.Game.Serialize()" />
+    <input type="submit" value="Make Move" />
+</form>
